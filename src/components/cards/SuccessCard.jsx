@@ -1,6 +1,10 @@
 import { Button } from "antd";
+import { useContext } from "react";
+import { MainContext } from "../../context/mainContext";
 
 function SuccessCard() {
+  const { setSuccessMessage } = useContext(MainContext);
+
   return (
     <div className="max-w-2xl px-8 py-4 bg-white rounded-xl shadow-md">
       <div className="flex items-center justify-between mb-4">
@@ -26,6 +30,7 @@ function SuccessCard() {
           className="px-4 py-1 text-sm font-bold text-mainColor border border-mainColor hover:bg-mainColor hover:text-white transition-colors duration-300 transform rounded cursor-pointe"
           tabIndex="0"
           role="button"
+          onClick={() => setSuccessMessage(false)}
         >
           <span className=" text-2xl">x</span>
         </a>

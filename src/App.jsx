@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import VerticalLayout from "./layouts/VerticalLayout";
-import Dashboard from "./components/Dashboard";
-import AllEmployees from "./pages/allEmployees/AllEmployees";
+import Dashboard from "./pages/Dashboard";
 import SuccessCard from "./components/cards/SuccessCard";
+import AllEmployees from "./pages/allEmployees/AllEmployees";
 
 const dashboardRoutes = [
   { path: "/", component: <Dashboard /> },

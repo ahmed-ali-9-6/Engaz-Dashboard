@@ -2,6 +2,7 @@
 import { DatePicker, Form, Input, InputNumber, Select } from "antd";
 import { useContext } from "react";
 import { MainContext } from "../../context/mainContext";
+
 import "../../assets/css/antStyle.css";
 const formItemLayout = {
   labelCol: {
@@ -24,6 +25,10 @@ const formItemLayout = {
 
 function PersonalInfo({ form }) {
   const { handleInputChange } = useContext(MainContext);
+
+  const handleUploadClick = () => {
+    document.getElementById("fileInput").click();
+  };
 
   return (
     <div className=" w-full">
@@ -166,16 +171,41 @@ function PersonalInfo({ form }) {
 
           <Form.Item
             label="National ID Attachment"
-            name="Input9"
+            name="input9"
             className="w-[120%]"
             rules={[
               {
                 required: true,
-                message: "Please input!",
+                message: "Please upload the file!",
               },
             ]}
           >
-            <InputNumber onChange={(e) => handleInputChange(e, "input9")} />
+            <div className="relative">
+              <Input placeholder="Upload file" className="pr-10" readOnly />
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                onClick={handleUploadClick}
+              >
+                <path
+                  d="M4.53564 11.4647L11.4299 4.5704C13.4802 2.52015 16.8044 2.52015 18.8546 4.5704C20.9049 6.62066 20.9046 9.94496 18.8544 11.9952L10.8994 19.9502C9.53258 21.317 7.31688 21.3168 5.95004 19.95C4.58321 18.5831 4.58287 16.3673 5.94971 15.0005L13.9047 7.0455C14.5881 6.36208 15.6967 6.36208 16.3801 7.0455C17.0635 7.72892 17.0631 8.83669 16.3796 9.52011L9.48535 16.4144"
+                  stroke="#B1B1B1"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <input
+                id="fileInput"
+                style={{ display: "none" }}
+                type="file"
+                onChange={(e) => handleInputChange(e.target.files[0], "input9")}
+              />
+            </div>
           </Form.Item>
 
           <Form.Item

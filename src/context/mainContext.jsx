@@ -1,4 +1,5 @@
 /*eslint-disable*/
+import { Form } from "antd";
 import { createContext, useEffect, useState } from "react";
 
 export const MainContext = createContext({
@@ -12,6 +13,13 @@ function MainContextProvider(props) {
   const { children } = props;
   const [percent, setPercent] = useState(0);
   const [currentForm, setCurrentForm] = useState("personalInfo");
+  const [personalInfoForm] = Form.useForm();
+  const [workInfoForm] = Form.useForm();
+  const [educationInfoForm] = Form.useForm();
+  const [payrollInfoForm] = Form.useForm();
+  const [successMessage, setSuccessMessage] = useState(false);
+  const [warningMessage, setWarningMessage] = useState(false);
+  const [incompleteCardMessage, setIncompleteCardMessage] = useState(false);
 
   const fieldStatus = {
     personalInfo: {
@@ -109,6 +117,34 @@ function MainContextProvider(props) {
     setPercent(0);
   };
 
+  const discardPersonalForm = () => {
+    personalInfoForm.resetFields();
+    setPercent(0);
+    setWarningMessage(false);
+    setIncompleteCardMessage(false);
+  };
+
+  const discardWorkForm = () => {
+    workInfoForm.resetFields();
+    setPercent(0);
+    setWarningMessage(false);
+    setIncompleteCardMessage(false);
+  };
+
+  const discardEductionForm = () => {
+    educationInfoForm.resetFields();
+    setPercent(0);
+    setWarningMessage(false);
+    setIncompleteCardMessage(false);
+  };
+
+  const discardPayrollForm = () => {
+    payrollInfoForm.resetFields();
+    setPercent(0);
+    setWarningMessage(false);
+    setIncompleteCardMessage(false);
+  };
+
   return (
     <MainContext.Provider
       value={{
@@ -116,6 +152,21 @@ function MainContextProvider(props) {
         setPercent,
         handleInputChange,
         switchForm,
+        currentForm,
+        personalInfoForm,
+        workInfoForm,
+        educationInfoForm,
+        payrollInfoForm,
+        discardPersonalForm,
+        discardWorkForm,
+        discardEductionForm,
+        discardPayrollForm,
+        successMessage,
+        setSuccessMessage,
+        warningMessage,
+        setWarningMessage,
+        incompleteCardMessage,
+        setIncompleteCardMessage,
       }}
     >
       {children}

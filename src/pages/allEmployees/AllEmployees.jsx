@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import { Button, ConfigProvider, Form, Steps } from "antd";
+import { Button, ConfigProvider, Steps } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../../context/mainContext";
 import PersonalInfo from "./PersonalInfo";
@@ -19,15 +19,22 @@ const items = [
 ];
 
 function AllEmployees() {
-  const [personalInfoForm] = Form.useForm();
-  const [workInfoForm] = Form.useForm();
-  const [educationInfoForm] = Form.useForm();
-  const [payrollInfoForm] = Form.useForm();
-  const { percent, setPercent, switchForm } = useContext(MainContext);
+  const {
+    percent,
+    setPercent,
+    switchForm,
+    personalInfoForm,
+    workInfoForm,
+    educationInfoForm,
+    payrollInfoForm,
+    successMessage,
+    setSuccessMessage,
+    warningMessage,
+    setWarningMessage,
+    incompleteCardMessage,
+    setIncompleteCardMessage,
+  } = useContext(MainContext);
   const [currentStep, setCurrentStep] = useState(0);
-  const [successMessage, setSuccessMessage] = useState(false);
-  const [warningMessage, setWarningMessage] = useState(false);
-  const [incompleteCardMessage, setIncompleteCardMessage] = useState(false);
 
   const handleCurrentStep = () => {
     if (currentStep === 4) return;
@@ -65,39 +72,31 @@ function AllEmployees() {
   };
 
   const handlePersonalDsicard = () => {
-    personalInfoForm.resetFields();
     setWarningMessage(true);
     setTimeout(() => {
       setWarningMessage(false);
-    }, 5000);
-    setPercent(0);
+    }, 8000);
   };
 
   const handleWorkDsicard = () => {
-    workInfoForm.resetFields();
     setWarningMessage(true);
     setTimeout(() => {
       setWarningMessage(false);
-    }, 5000);
-    setPercent(0);
+    }, 8000);
   };
 
   const handleEductionDsicard = () => {
-    educationInfoForm.resetFields();
     setWarningMessage(true);
     setTimeout(() => {
       setWarningMessage(false);
-    }, 5000);
-    setPercent(0);
+    }, 8000);
   };
 
   const handlePayrollDsicard = () => {
-    payrollInfoForm.resetFields();
     setWarningMessage(true);
     setTimeout(() => {
       setWarningMessage(false);
-    }, 5000);
-    setPercent(0);
+    }, 8000);
   };
 
   useEffect(() => {
@@ -107,21 +106,27 @@ function AllEmployees() {
   return (
     <>
       <div className=" flex justify-between border-b border-gray-200 relative">
-        {successMessage && (
-          <div className=" fixed top-1/3 right-5 z-40 transition-all duration-300">
-            <SuccessCard />
-          </div>
-        )}
-        {incompleteCardMessage && (
-          <div className=" fixed top-1/3 right-5 z-40 transition-all duration-300">
-            <IncompleteCard />
-          </div>
-        )}
-        {warningMessage && (
-          <div className=" fixed top-1/3 right-5 z-40 transition-all duration-300">
-            <WarningCard />
-          </div>
-        )}
+        <div
+          className={`${
+            successMessage ? " translate-x-0 " : "translate-x-[150%]"
+          }  fixed top-1/3 right-5 z-40 transition-all duration-500`}
+        >
+          <SuccessCard />
+        </div>
+        <div
+          className={`${
+            incompleteCardMessage ? " translate-x-0 " : "translate-x-[150%]"
+          }  fixed top-1/3 right-5 z-40 transition-all duration-500`}
+        >
+          <IncompleteCard />
+        </div>
+        <div
+          className={`${
+            warningMessage ? " translate-x-0 " : "translate-x-[150%]"
+          }  fixed top-1/3 right-5 z-40 transition-all duration-500`}
+        >
+          <WarningCard />
+        </div>
         <BreadCrumb />
         <div className="flex gap-4">
           {currentStep === 0 && (
@@ -142,7 +147,7 @@ function AllEmployees() {
                       setSuccessMessage(true);
                       setTimeout(() => {
                         setSuccessMessage(false);
-                      }, 5000);
+                      }, 8000);
                       handleCurrentStep();
                     })
                     .catch((error) => {
@@ -150,7 +155,7 @@ function AllEmployees() {
                       setIncompleteCardMessage(true);
                       setTimeout(() => {
                         setIncompleteCardMessage(false);
-                      }, 5000);
+                      }, 8000);
                     });
                 }}
               >
@@ -176,7 +181,7 @@ function AllEmployees() {
                       setSuccessMessage(true);
                       setTimeout(() => {
                         setSuccessMessage(false);
-                      }, 5000);
+                      }, 8000);
                       handleCurrentStep();
                     })
                     .catch((error) => {
@@ -184,7 +189,7 @@ function AllEmployees() {
                       setIncompleteCardMessage(true);
                       setTimeout(() => {
                         setIncompleteCardMessage(false);
-                      }, 5000);
+                      }, 8000);
                     });
                 }}
               >
@@ -210,7 +215,7 @@ function AllEmployees() {
                       setSuccessMessage(true);
                       setTimeout(() => {
                         setSuccessMessage(false);
-                      }, 5000);
+                      }, 8000);
                       handleCurrentStep();
                     })
                     .catch((error) => {
@@ -218,7 +223,7 @@ function AllEmployees() {
                       setIncompleteCardMessage(true);
                       setTimeout(() => {
                         setIncompleteCardMessage(false);
-                      }, 5000);
+                      }, 8000);
                     });
                 }}
               >
@@ -244,7 +249,7 @@ function AllEmployees() {
                       setSuccessMessage(true);
                       setTimeout(() => {
                         setSuccessMessage(false);
-                      }, 5000);
+                      }, 8000);
                       handleCurrentStep();
                     })
                     .catch((error) => {
@@ -252,7 +257,7 @@ function AllEmployees() {
                       setIncompleteCardMessage(true);
                       setTimeout(() => {
                         setIncompleteCardMessage(false);
-                      }, 5000);
+                      }, 8000);
                     });
                 }}
               >

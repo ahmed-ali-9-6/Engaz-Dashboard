@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import { DatePicker, Form, Input, InputNumber, Select } from "antd";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { MainContext } from "../../context/mainContext";
 
 import "../../assets/css/antStyle.css";
@@ -25,9 +25,15 @@ const formItemLayout = {
 
 function PersonalInfo({ form }) {
   const { handleInputChange } = useContext(MainContext);
+  const [fileName, setFileName] = useState("Attach");
 
   const handleUploadClick = () => {
-    document.getElementById("fileInput").click();
+    document.getElementById("fileInput9").click();
+  };
+
+  const handleInputFile = (file, nameField) => {
+    handleInputChange(file, nameField);
+    setFileName(file.name);
   };
 
   return (
@@ -62,7 +68,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input1")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input1")}
+              placeholder="Ahmed"
+            />
           </Form.Item>
 
           <Form.Item
@@ -76,7 +85,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input2")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input2")}
+              placeholder="Ali"
+            />
           </Form.Item>
 
           <Form.Item
@@ -90,7 +102,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input3")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input3")}
+              placeholder="Hassan"
+            />
           </Form.Item>
 
           <Form.Item
@@ -104,7 +119,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <Select onChange={(e) => handleInputChange(e, "input4")}>
+            <Select
+              onChange={(e) => handleInputChange(e, "input4")}
+              placeholder="Male"
+            >
               <Select.Option value="Male">Male</Select.Option>
               <Select.Option value="Female">Female</Select.Option>
             </Select>
@@ -121,7 +139,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <InputNumber onChange={(e) => handleInputChange(e, "input5")} />
+            <InputNumber
+              onChange={(e) => handleInputChange(e, "input5")}
+              placeholder="40"
+            />
           </Form.Item>
 
           <Form.Item
@@ -149,7 +170,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <Select onChange={(e) => handleInputChange(e, "input7")}>
+            <Select
+              onChange={(e) => handleInputChange(e, "input7")}
+              placeholder="Egyptian"
+            >
               <Select.Option value="Egyptian">Egyptian</Select.Option>
               <Select.Option value="Syrian">syrian</Select.Option>
             </Select>
@@ -166,7 +190,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <InputNumber onChange={(e) => handleInputChange(e, "input8")} />
+            <InputNumber
+              onChange={(e) => handleInputChange(e, "input8")}
+              placeholder="20320231032145"
+            />
           </Form.Item>
 
           <Form.Item
@@ -181,29 +208,33 @@ function PersonalInfo({ form }) {
             ]}
           >
             <div className="relative">
-              <Input placeholder="Upload file" className="pr-10" readOnly />
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              <Input placeholder={fileName} className="pr-10" readOnly />
+              <div
+                className="absolute top-1/2 transform -translate-y-1/2 h-[35px] w-full flex justify-end cursor-pointer"
                 onClick={handleUploadClick}
               >
-                <path
-                  d="M4.53564 11.4647L11.4299 4.5704C13.4802 2.52015 16.8044 2.52015 18.8546 4.5704C20.9049 6.62066 20.9046 9.94496 18.8544 11.9952L10.8994 19.9502C9.53258 21.317 7.31688 21.3168 5.95004 19.95C4.58321 18.5831 4.58287 16.3673 5.94971 15.0005L13.9047 7.0455C14.5881 6.36208 15.6967 6.36208 16.3801 7.0455C17.0635 7.72892 17.0631 8.83669 16.3796 9.52011L9.48535 16.4144"
-                  stroke="#B1B1B1"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className=" mr-2 mt-[5px]"
+                >
+                  <path
+                    d="M4.53564 11.4647L11.4299 4.5704C13.4802 2.52015 16.8044 2.52015 18.8546 4.5704C20.9049 6.62066 20.9046 9.94496 18.8544 11.9952L10.8994 19.9502C9.53258 21.317 7.31688 21.3168 5.95004 19.95C4.58321 18.5831 4.58287 16.3673 5.94971 15.0005L13.9047 7.0455C14.5881 6.36208 15.6967 6.36208 16.3801 7.0455C17.0635 7.72892 17.0631 8.83669 16.3796 9.52011L9.48535 16.4144"
+                    stroke="#B1B1B1"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
               <input
-                id="fileInput"
+                id="fileInput9"
                 style={{ display: "none" }}
                 type="file"
-                onChange={(e) => handleInputChange(e.target.files[0], "input9")}
+                onChange={(e) => handleInputFile(e.target.files[0], "input9")}
               />
             </div>
           </Form.Item>
@@ -219,7 +250,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input10")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input10")}
+              placeholder="Exempt"
+            />
           </Form.Item>
 
           <Form.Item
@@ -233,7 +267,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input11")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input11")}
+              placeholder="Single"
+            />
           </Form.Item>
 
           <Form.Item
@@ -247,7 +284,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input12")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input12")}
+              placeholder="Cairo"
+            />
           </Form.Item>
 
           <Form.Item
@@ -261,7 +301,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input13")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input13")}
+              placeholder="Cairo, Egypt"
+            />
           </Form.Item>
 
           <Form.Item
@@ -279,7 +322,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input14")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input14")}
+              placeholder="engaz@email.com"
+            />
           </Form.Item>
 
           <Form.Item
@@ -293,7 +339,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <InputNumber onChange={(e) => handleInputChange(e, "input15")} />
+            <InputNumber
+              onChange={(e) => handleInputChange(e, "input15")}
+              placeholder="(+20) 1232365632"
+            />
           </Form.Item>
 
           <Form.Item
@@ -307,7 +356,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <InputNumber onChange={(e) => handleInputChange(e, "input16")} />
+            <InputNumber
+              onChange={(e) => handleInputChange(e, "input16")}
+              placeholder="(+20) 1232365632"
+            />
           </Form.Item>
 
           <Form.Item
@@ -321,7 +373,10 @@ function PersonalInfo({ form }) {
               },
             ]}
           >
-            <InputNumber onChange={(e) => handleInputChange(e, "input17")} />
+            <InputNumber
+              onChange={(e) => handleInputChange(e, "input17")}
+              placeholder="(+20) 1232365632"
+            />
           </Form.Item>
           {/* </div> */}
         </div>

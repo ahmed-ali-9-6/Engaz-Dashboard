@@ -54,7 +54,10 @@ function PayrollInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input1")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input1")}
+              placeholder="Attach"
+            />
           </Form.Item>
 
           <Form.Item
@@ -68,7 +71,10 @@ function PayrollInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input2")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input2")}
+              placeholder="Attach"
+            />
           </Form.Item>
 
           <Form.Item
@@ -82,7 +88,10 @@ function PayrollInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input3")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input3")}
+              placeholder="2024"
+            />
           </Form.Item>
 
           <Form.Item
@@ -96,7 +105,10 @@ function PayrollInfo({ form }) {
               },
             ]}
           >
-            <InputNumber onChange={(e) => handleInputChange(e, "input4")} />
+            <InputNumber
+              onChange={(e) => handleInputChange(e, "input4")}
+              placeholder="Cairo"
+            />
           </Form.Item>
         </div>
         <p className=" my-9 pl-12 text-lg">
@@ -121,7 +133,10 @@ function PayrollInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input5")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input5")}
+              placeholder="Monthly"
+            />
           </Form.Item>
 
           <Form.Item
@@ -135,7 +150,10 @@ function PayrollInfo({ form }) {
               },
             ]}
           >
-            <InputNumber onChange={(e) => handleInputChange(e, "input6")} />
+            <InputNumber
+              onChange={(e) => handleInputChange(e, "input6")}
+              placeholder="10"
+            />
           </Form.Item>
 
           <Form.Item
@@ -149,7 +167,10 @@ function PayrollInfo({ form }) {
               },
             ]}
           >
-            <InputNumber onChange={(e) => handleInputChange(e, "input7")} />
+            <InputNumber
+              onChange={(e) => handleInputChange(e, "input7")}
+              placeholder="10"
+            />
           </Form.Item>
 
           <Form.Item
@@ -163,7 +184,10 @@ function PayrollInfo({ form }) {
               },
             ]}
           >
-            <Input onChange={(e) => handleInputChange(e, "input8")} />
+            <Input
+              onChange={(e) => handleInputChange(e, "input8")}
+              placeholder="Health"
+            />
           </Form.Item>
         </div>
       </Form>

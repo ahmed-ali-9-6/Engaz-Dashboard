@@ -67,7 +67,6 @@ function MainContextProvider(props) {
       input11: false,
       input12: false,
       input13: false,
-      input14: false,
     },
     payrollInfo: {
       input1: false,
@@ -80,8 +79,9 @@ function MainContextProvider(props) {
       input8: false,
     },
   };
-
+  
   const [formFieldStatus, setFormFieldStatus] = useState(fieldStatus);
+  console.log(formFieldStatus.eductionInfo);
 
   useEffect(() => {
     const fields = formFieldStatus[currentForm];
@@ -167,6 +167,7 @@ function MainContextProvider(props) {
         setWarningMessage,
         incompleteCardMessage,
         setIncompleteCardMessage,
+        setFormFieldStatus,
       }}
     >
       {children}

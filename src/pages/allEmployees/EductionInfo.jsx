@@ -23,7 +23,7 @@ const formItemLayout = {
   },
 };
 
-let nextId = 2; // متغير خارجي لتعقب المعرف التالي
+let nextId = 2;
 
 function EductionInfo({ form }) {
   const { handleInputChange, setFormFieldStatus } = useContext(MainContext);
@@ -37,7 +37,7 @@ function EductionInfo({ form }) {
     const newInputs = generateInputNames(lastInputNumber + 1);
     setCertifications([...certifications, { id: nextId, inputs: newInputs }]);
     setLastInputNumber(lastInputNumber + newInputs.length);
-    nextId++; // تحديث قيمة المعرف التالي
+    nextId++;
   };
 
   const handleRemoveCertificationGroup = (id) => {
@@ -50,14 +50,12 @@ function EductionInfo({ form }) {
   };
 
   useEffect(() => {
-    // إنشاء الحقول الجديدة مع الحفاظ على القيم الحالية
     setFormFieldStatus((prev) => ({
       ...prev,
       eductionInfo: {
-        ...prev.eductionInfo, // الاحتفاظ بالقيم الحالية
+        ...prev.eductionInfo,
         ...certifications.reduce((acc, group) => {
           group.inputs.forEach((inputName) => {
-            // إذا كانت القيمة موجودة بالفعل، نحتفظ بها
             acc[inputName] = prev.eductionInfo[inputName] || false;
           });
           return acc;

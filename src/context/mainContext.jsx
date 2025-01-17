@@ -79,9 +79,8 @@ function MainContextProvider(props) {
       input8: false,
     },
   };
-  
+
   const [formFieldStatus, setFormFieldStatus] = useState(fieldStatus);
-  console.log(formFieldStatus.eductionInfo);
 
   useEffect(() => {
     const fields = formFieldStatus[currentForm];

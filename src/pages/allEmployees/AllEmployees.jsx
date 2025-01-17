@@ -103,8 +103,6 @@ function AllEmployees() {
     setPercent(0);
   }, []);
 
-  console.log(percent);
-
   return (
     <>
       <div className=" flex justify-between border-b border-gray-200 relative">
